@@ -198,6 +198,7 @@ unsafe_no_jsmanaged_fields!(*mut JobQueue);
 unsafe_no_jsmanaged_fields!(Cow<'static, str>);
 
 unsafe_no_jsmanaged_fields!(CspList);
+unsafe_no_jsmanaged_fields!(servo_media::audio::node::AudioNodeType);
 
 /// Trace a `JSVal`.
 pub fn trace_jsval(tracer: *mut JSTracer, description: &str, val: &Heap<JSVal>) {

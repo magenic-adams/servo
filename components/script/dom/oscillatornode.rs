@@ -18,7 +18,7 @@ use crate::dom::bindings::reflector::reflect_dom_object;
 use crate::dom::bindings::root::{Dom, DomRoot};
 use crate::dom::window::Window;
 use dom_struct::dom_struct;
-use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage};
+use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage, AudioNodeType};
 use servo_media::audio::oscillator_node::OscillatorNodeMessage;
 use servo_media::audio::oscillator_node::OscillatorNodeOptions as ServoMediaOscillatorOptions;
 use servo_media::audio::oscillator_node::OscillatorType as ServoMediaOscillatorType;
@@ -57,6 +57,7 @@ impl OscillatorNode {
             window,
             context,
             node_id,
+            AudioNodeType::OscillatorNode,
             ParamType::Frequency,
             AutomationRate::A_rate,
             440.,
@@ -67,6 +68,7 @@ impl OscillatorNode {
             window,
             context,
             node_id,
+            AudioNodeType::OscillatorNode,
             ParamType::Detune,
             AutomationRate::A_rate,
             0.,

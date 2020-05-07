@@ -16,7 +16,7 @@ use crate::dom::bindings::root::{Dom, DomRoot};
 use crate::dom::window::Window;
 use dom_struct::dom_struct;
 use servo_media::audio::gain_node::GainNodeOptions;
-use servo_media::audio::node::AudioNodeInit;
+use servo_media::audio::node::{AudioNodeInit, AudioNodeType};
 use servo_media::audio::param::ParamType;
 use std::f32;
 
@@ -48,6 +48,7 @@ impl GainNode {
             window,
             context,
             node.node_id(),
+            AudioNodeType::GainNode,
             ParamType::Gain,
             AutomationRate::A_rate,
             *options.gain, // default value

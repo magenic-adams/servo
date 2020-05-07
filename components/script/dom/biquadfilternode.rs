@@ -19,7 +19,7 @@ use crate::dom::window::Window;
 use dom_struct::dom_struct;
 use servo_media::audio::biquad_filter_node::BiquadFilterNodeMessage;
 use servo_media::audio::biquad_filter_node::{BiquadFilterNodeOptions, FilterType};
-use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage};
+use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage, AudioNodeType};
 use servo_media::audio::param::ParamType;
 use std::cell::Cell;
 use std::f32;
@@ -58,6 +58,7 @@ impl BiquadFilterNode {
             window,
             context,
             node.node_id(),
+            AudioNodeType::BiquadFilterNode,
             ParamType::Gain,
             AutomationRate::A_rate,
             options.gain, // default value
@@ -68,6 +69,7 @@ impl BiquadFilterNode {
             window,
             context,
             node.node_id(),
+            AudioNodeType::BiquadFilterNode,
             ParamType::Q,
             AutomationRate::A_rate,
             options.q, // default value
@@ -78,6 +80,7 @@ impl BiquadFilterNode {
             window,
             context,
             node.node_id(),
+            AudioNodeType::BiquadFilterNode,
             ParamType::Frequency,
             AutomationRate::A_rate,
             options.frequency, // default value
@@ -88,6 +91,7 @@ impl BiquadFilterNode {
             window,
             context,
             node.node_id(),
+            AudioNodeType::BiquadFilterNode,
             ParamType::Detune,
             AutomationRate::A_rate,
             options.detune, // default value
