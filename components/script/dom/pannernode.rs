@@ -24,7 +24,7 @@ use crate::dom::bindings::reflector::reflect_dom_object;
 use crate::dom::bindings::root::{Dom, DomRoot};
 use crate::dom::window::Window;
 use dom_struct::dom_struct;
-use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage};
+use servo_media::audio::node::{AudioNodeInit, AudioNodeMessage, AudioNodeType};
 use servo_media::audio::panner_node::PannerNodeMessage;
 use servo_media::audio::panner_node::{DistanceModel, PannerNodeOptions, PanningModel};
 use servo_media::audio::param::{ParamDir, ParamType};
@@ -95,6 +95,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Position(ParamDir::X),
             AutomationRate::A_rate,
             options.position_x, // default value
@@ -105,6 +106,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Position(ParamDir::Y),
             AutomationRate::A_rate,
             options.position_y, // default value
@@ -115,6 +117,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Position(ParamDir::Z),
             AutomationRate::A_rate,
             options.position_z, // default value
@@ -125,6 +128,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Orientation(ParamDir::X),
             AutomationRate::A_rate,
             options.orientation_x, // default value
@@ -135,6 +139,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Orientation(ParamDir::Y),
             AutomationRate::A_rate,
             options.orientation_y, // default value
@@ -145,6 +150,7 @@ impl PannerNode {
             window,
             context,
             id,
+            AudioNodeType::PannerNode,
             ParamType::Orientation(ParamDir::Z),
             AutomationRate::A_rate,
             options.orientation_z, // default value
