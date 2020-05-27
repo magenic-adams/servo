@@ -40,7 +40,7 @@ use net_traits::quality::{quality_to_value, Quality, QualityItem};
 use net_traits::request::Origin::Origin as SpecificOrigin;
 use net_traits::request::{is_cors_safelisted_method, is_cors_safelisted_request_header};
 use net_traits::request::{
-    BodyChunkRequest, RedirectMode, Referrer, Request, RequestBuilder, RequestMode,
+    BodyChunkRequest, RedirectMode, Referrer, Request, RequestBody, RequestBuilder, RequestMode,
 };
 use net_traits::request::{CacheMode, CredentialsMode, Destination, Origin};
 use net_traits::request::{ResponseTainting, ServiceWorkersMode};
@@ -975,9 +975,16 @@ fn http_network_or_cache_fetch(
     let http_request = if request_has_no_window && request.redirect_mode == RedirectMode::Error {
         request
     } else {
-        // Step 5.2
-        // TODO Implement body source
+        // Step 5.2.1, .2.2 and .2.3
         http_request = request.clone();
+        // Step 5.2.4
+        if let Some(body) = http_request.body.as_ref() {
+            request.body = Some(RequestBody {
+                source: body.source.clone(),
+                stream: None,
+                total_bytes: None,
+            });
+        }
         &mut http_request
     };
 
